@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		6477FA91267C40860025846D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6477FA90267C40860025846D /* AppDelegate.swift */; };
 		6477FA93267C40860025846D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6477FA92267C40860025846D /* SceneDelegate.swift */; };
-		6477FA95267C40860025846D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6477FA94267C40860025846D /* ViewController.swift */; };
 		6477FA98267C40860025846D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6477FA96267C40860025846D /* Main.storyboard */; };
 		6477FA9A267C40870025846D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6477FA99267C40870025846D /* Assets.xcassets */; };
 		6477FA9D267C40870025846D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6477FA9B267C40870025846D /* LaunchScreen.storyboard */; };
+		6477FAA6267C422F0025846D /* AstronEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6477FAA5267C422F0025846D /* AstronEntranceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6477FA8D267C40860025846D /* Astronomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Astronomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6477FA90267C40860025846D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6477FA92267C40860025846D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6477FA94267C40860025846D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6477FA97267C40860025846D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6477FA99267C40870025846D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6477FA9C267C40870025846D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6477FA9E267C40870025846D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6477FAA5267C422F0025846D /* AstronEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronEntranceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +58,29 @@
 			children = (
 				6477FA90267C40860025846D /* AppDelegate.swift */,
 				6477FA92267C40860025846D /* SceneDelegate.swift */,
-				6477FA94267C40860025846D /* ViewController.swift */,
-				6477FA96267C40860025846D /* Main.storyboard */,
+				6477FAAA267C42420025846D /* View */,
+				6477FAA8267C42350025846D /* Controller */,
 				6477FA99267C40870025846D /* Assets.xcassets */,
 				6477FA9B267C40870025846D /* LaunchScreen.storyboard */,
 				6477FA9E267C40870025846D /* Info.plist */,
 			);
 			path = Astronomy;
+			sourceTree = "<group>";
+		};
+		6477FAA8267C42350025846D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6477FAA5267C422F0025846D /* AstronEntranceViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6477FAAA267C42420025846D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6477FA96267C40860025846D /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6477FA95267C40860025846D /* ViewController.swift in Sources */,
 				6477FA91267C40860025846D /* AppDelegate.swift in Sources */,
 				6477FA93267C40860025846D /* SceneDelegate.swift in Sources */,
+				6477FAA6267C422F0025846D /* AstronEntranceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
