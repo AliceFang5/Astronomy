@@ -11,4 +11,5 @@ struct K {
     static let collectionRowNunber = 4
     static let collectionInteritemSpacing = 2
     static let collectionLineSpacing = 0
+    static let showAstronDetailSegue = "showAstronDetail"
 }

@@ -77,6 +77,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <segue destination="hjm-va-Hfi" kind="show" identifier="showAstronDetail" id="NgL-FK-VcG"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -89,6 +92,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGr-VG-1S3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1457" y="124"/>
+        </scene>
+        <!--Astron Detail View Controller-->
+        <scene sceneID="Nf9-u0-Ayb">
+            <objects>
+                <viewController id="hjm-va-Hfi" customClass="AstronDetailViewController" customModule="Astronomy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ihD-ag-UXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-qd-x3L">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yro-kC-oIt">
+                                        <rect key="frame" x="0.0" y="162" width="414" height="774"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uFY-Rx-FHv">
+                                                <rect key="frame" x="0.0" y="-142" width="414" height="418"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2006-12-31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcR-Bk-h0u">
+                                                        <rect key="frame" x="164" y="0.0" width="86.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJa-Rm-A79">
+                                                        <rect key="frame" x="0.0" y="29.5" width="414" height="309.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Year of Extraterrestrial Fountains and Flows" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReK-jz-Bwd">
+                                                        <rect key="frame" x="10.5" y="359" width="393" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MGS, MSSS, JPL, NASA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPD-S1-hQK">
+                                                        <rect key="frame" x="10.5" y="398.5" width="393" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="QPD-S1-hQK" firstAttribute="top" secondItem="ReK-jz-Bwd" secondAttribute="bottom" constant="20" id="OpZ-rs-AsS"/>
+                                                    <constraint firstItem="QPD-S1-hQK" firstAttribute="width" secondItem="ReK-jz-Bwd" secondAttribute="width" id="wAe-zs-rdC"/>
+                                                    <constraint firstItem="ReK-jz-Bwd" firstAttribute="top" secondItem="dJa-Rm-A79" secondAttribute="bottom" constant="20" id="yzE-E4-FBc"/>
+                                                    <constraint firstItem="dJa-Rm-A79" firstAttribute="top" secondItem="jcR-Bk-h0u" secondAttribute="bottom" constant="10" id="zrj-LO-Oyt"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-j3-1Bv">
+                                                <rect key="frame" x="10.5" y="296" width="393" height="439.5"/>
+                                                <mutableString key="text">The past year was extraordinary for the discovery of extraterrestrial fountains and flows -- some offering new potential in the search for liquid water and the origin of life beyond planet Earth.. Increased evidence was uncovered that fountains spurt not only from Saturn's moon Enceladus, but from the dunes of Mars as well. Lakes were found on Saturn's moon Titan, and the residual of a flowing liquid was discovered on the walls of Martian craters. The diverse Solar System fluidity may involve forms of slushy water-ice, methane, or sublimating carbon dioxide. Pictured above, the light-colored path below the image center is hypothesized to have been created sometime in just the past few years by liquid water flowing across the surface of Mars.dunes of Mars as well. Lakes were found on Saturn's moon Titan, and the residual of a flowing liquid was discovered on the walls of Martian craters. The diverse Solar System fluidity may involve forms of slushy water-ice, methane, or sublimating carbon dioxide. Pictured above, the light-colored path below the image center is hypothesized to have been created sometime in just the past few years by liquid water flowing across the surface of Mars.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="R2a-j3-1Bv" firstAttribute="top" secondItem="uFY-Rx-FHv" secondAttribute="bottom" constant="20" id="CiK-iJ-DUf"/>
+                                            <constraint firstItem="ReK-jz-Bwd" firstAttribute="width" secondItem="R2a-j3-1Bv" secondAttribute="width" id="QYM-vd-gAd"/>
+                                            <constraint firstItem="dJa-Rm-A79" firstAttribute="width" secondItem="yro-kC-oIt" secondAttribute="width" id="UfZ-Qw-chF"/>
+                                            <constraint firstItem="R2a-j3-1Bv" firstAttribute="centerX" secondItem="yro-kC-oIt" secondAttribute="centerX" id="XkQ-Vt-ulr"/>
+                                            <constraint firstItem="uFY-Rx-FHv" firstAttribute="centerX" secondItem="yro-kC-oIt" secondAttribute="centerX" id="aN5-Zx-MS7"/>
+                                            <constraint firstItem="R2a-j3-1Bv" firstAttribute="width" secondItem="dJa-Rm-A79" secondAttribute="width" multiplier="0.95" id="kf7-Yl-6uF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZR0-Z0-uae" firstAttribute="bottom" secondItem="R2a-j3-1Bv" secondAttribute="bottom" constant="10" id="8z1-ft-QGe"/>
+                                    <constraint firstItem="ZR0-Z0-uae" firstAttribute="top" secondItem="jcR-Bk-h0u" secondAttribute="top" constant="-20" id="UI8-j4-vhw"/>
+                                    <constraint firstItem="yro-kC-oIt" firstAttribute="leading" secondItem="5At-LQ-TWx" secondAttribute="leading" id="YN2-tb-ocX"/>
+                                    <constraint firstItem="yro-kC-oIt" firstAttribute="top" secondItem="5At-LQ-TWx" secondAttribute="top" id="qqU-Ex-8wg"/>
+                                    <constraint firstItem="ZR0-Z0-uae" firstAttribute="width" secondItem="yro-kC-oIt" secondAttribute="width" id="toj-Wm-2OG"/>
+                                    <constraint firstItem="yro-kC-oIt" firstAttribute="trailing" secondItem="5At-LQ-TWx" secondAttribute="trailing" id="vJ2-Wf-qhy"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ZR0-Z0-uae"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="5At-LQ-TWx"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KE4-Ya-0Mk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pSa-qd-x3L" firstAttribute="leading" secondItem="KE4-Ya-0Mk" secondAttribute="leading" id="56H-ta-QYr"/>
+                            <constraint firstItem="dJa-Rm-A79" firstAttribute="height" secondItem="KE4-Ya-0Mk" secondAttribute="height" multiplier="0.4" id="9VR-aV-zNw"/>
+                            <constraint firstItem="yro-kC-oIt" firstAttribute="height" secondItem="KE4-Ya-0Mk" secondAttribute="height" id="NwG-I4-HCw"/>
+                            <constraint firstItem="pSa-qd-x3L" firstAttribute="top" secondItem="KE4-Ya-0Mk" secondAttribute="top" id="WG5-Mf-Lo4"/>
+                            <constraint firstItem="pSa-qd-x3L" firstAttribute="bottom" secondItem="KE4-Ya-0Mk" secondAttribute="bottom" id="vMe-7d-dot"/>
+                            <constraint firstItem="pSa-qd-x3L" firstAttribute="trailing" secondItem="KE4-Ya-0Mk" secondAttribute="trailing" id="xOQ-I5-9Dp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PhE-6I-6Sg"/>
+                    <connections>
+                        <outlet property="astronImageView" destination="dJa-Rm-A79" id="qxd-Fv-VUI"/>
+                        <outlet property="copyrightLabel" destination="QPD-S1-hQK" id="PfI-Mp-v8a"/>
+                        <outlet property="dateLabel" destination="jcR-Bk-h0u" id="ZjE-2a-voA"/>
+                        <outlet property="descriptionLabel" destination="R2a-j3-1Bv" id="1eC-qi-OmG"/>
+                        <outlet property="titleLabel" destination="ReK-jz-Bwd" id="1vJ-hp-MGb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YT-T2-ie0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344.9275362318845" y="123.88392857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n5L-Nc-OwZ">
