@@ -20,8 +20,8 @@ class AstronCollectionViewController: UICollectionViewController {
         
         AstronController.shared.fetchAstronData { (astronItems) in
             if let astronItems = astronItems{
-                self.astronItems = astronItems
                 DispatchQueue.main.async {
+                    self.astronItems = astronItems
                     self.collectionView.reloadData()
                 }
             }
@@ -48,7 +48,7 @@ class AstronCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.astronCellIdentifier, for: indexPath) as! AstronCell
     
-        cell.update(astronItems[indexPath.row])
+        cell.update(astronItems[indexPath.row], collectionView: collectionView, indexPath: indexPath, cell: cell)
         return cell
     }
 

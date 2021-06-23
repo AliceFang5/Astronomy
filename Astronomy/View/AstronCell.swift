@@ -20,7 +20,7 @@ class AstronCell: UICollectionViewCell {
         widthConstraint.constant = Self.width
     }
     
-    func update(_ astronItem:AstronItem){
+    func update(_ astronItem:AstronItem, collectionView: UICollectionView, indexPath: IndexPath, cell: UICollectionViewCell){
         astronTitleLabel.text = astronItem.title
         astronTitleLabel.textColor = .white
         astronTitleLabel.textAlignment = .center
@@ -28,7 +28,11 @@ class AstronCell: UICollectionViewCell {
         astronImageView.contentMode = .scaleAspectFit
         AstronController.shared.fetchImage(withURL: astronItem.url) { (image) in
             if let image = image{
+                
                 DispatchQueue.main.async {
+                    if let currentIndexPath = collectionView.indexPath(for: cell), currentIndexPath != indexPath{
+                        return
+                    }
                     self.astronImageView.image = image
                     self.astronImageView.contentMode = .scaleAspectFill
                 }
