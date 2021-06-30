@@ -26,10 +26,11 @@ class AstronDetailViewController: UIViewController {
         let dateString = astronItem.date
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let date = formatter.date(from: dateString)!
-        formatter.dateFormat = "yyyy MMM. d"
-        dateLabel.text = formatter.string(from: date)
-        
+        if let date = formatter.date(from: dateString){
+            formatter.dateFormat = "yyyy MMM. d"
+            dateLabel.text = formatter.string(from: date)
+        }
+
         titleLabel.text = astronItem.title
         copyrightLabel.text = astronItem.copyright
         descriptionLabel.text = astronItem.description

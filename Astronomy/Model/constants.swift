@@ -6,7 +6,7 @@
 //
 
 struct K {
-    static let astronCellIdentifier = "AstronCell"
+    static let astronCellIdentifier = "AstronCellId"
     static let astronCellNibName = "AstronCell"
     static let collectionRowNunber = 4
     static let collectionInteritemSpacing = 2

@@ -9,14 +9,16 @@ import UIKit
 
 class AstronController{
     static let shared = AstronController()
-    let astronURL = URL(string: "https://raw.githubusercontent.com/cmmobile/NasaDataSet/main/apod.json")!
+    let astronURL = "https://raw.githubusercontent.com/cmmobile/NasaDataSet/main/apod.json"
     let imageCache = NSCache<NSURL, UIImage>()
     
     func fetchAstronData(completion: @escaping ([AstronItem]?) -> Void){
-        let task = URLSession.shared.dataTask(with: astronURL) { (data, response, error) in
+        guard let url = URL(string: astronURL) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
             if let data = data, let astronitems = try? jsonDecoder.decode([AstronItem].self, from: data){
-                print(astronitems[2].title)
+//                print(astronitems[2].title)
                 completion(astronitems)
             }else{
                 completion(nil)
@@ -26,7 +28,7 @@ class AstronController{
     }
     
     func fetchImage(withURL urlString: String, completion: @escaping (UIImage?) -> Void){
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else { return }
         
         if let image = imageCache.object(forKey: url as NSURL){
             completion(image)

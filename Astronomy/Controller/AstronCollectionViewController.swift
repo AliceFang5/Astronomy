@@ -62,10 +62,11 @@ class AstronCollectionViewController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.showAstronDetailSegue{
-            let destinationVC = segue.destination as! AstronDetailViewController
-            let index = collectionView.indexPathsForSelectedItems![0]
-            let astronIndex = index[1]
-            destinationVC.astronItem = astronItems[astronIndex]
+            guard let destinationVC = segue.destination as? AstronDetailViewController else { return }
+            if let index = collectionView.indexPathsForSelectedItems?[0]{
+                let astronIndex = index[1]
+                destinationVC.astronItem = astronItems[astronIndex]
+            }
         }
     }
 
