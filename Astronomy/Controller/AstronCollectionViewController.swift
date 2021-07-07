@@ -18,11 +18,19 @@ class AstronCollectionViewController: UICollectionViewController {
         
         self.collectionView.register(UINib(nibName: K.astronCellNibName, bundle: nil), forCellWithReuseIdentifier: K.astronCellIdentifier)
         
-        AstronController.shared.fetchAstronData { (astronItems) in
-            if let astronItems = astronItems{
+        AstronController.shared.fetchAstronData { (result) in
+            switch result{
+            case .success(let astronItems):
                 DispatchQueue.main.async {
                     self.astronItems = astronItems
                     self.collectionView.reloadData()
+                }
+            case .failure(let networkError):
+                switch networkError {
+                case .invalidUrl, .invalidData, .invalidResponse:
+                    print(networkError)
+                case .requestFailed(let error), .decodingError(let error):
+                    print(networkError, error)
                 }
             }
         }

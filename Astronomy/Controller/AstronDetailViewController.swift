@@ -36,11 +36,19 @@ class AstronDetailViewController: UIViewController {
         descriptionLabel.text = astronItem.description
         astronImageView.image = UIImage(systemName: "photo")
         astronImageView.contentMode = .scaleAspectFit
-        AstronController.shared.fetchImage(withURL: astronItem.hdurl) { (image) in
-            if let image = image{
+        AstronController.shared.fetchImage(withURL: astronItem.hdurl) { (result) in
+            switch result{
+            case .success(let image):
                 DispatchQueue.main.async {
                     self.astronImageView.image = image
                     self.astronImageView.contentMode = .scaleAspectFill
+                }
+            case .failure(let networkError):
+                switch networkError {
+                case .invalidUrl, .invalidData, .invalidResponse:
+                    print(networkError)
+                case .requestFailed(let error), .decodingError(let error):
+                    print(networkError, error)
                 }
             }
         }

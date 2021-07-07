@@ -26,15 +26,22 @@ class AstronCell: UICollectionViewCell {
         astronTitleLabel.textAlignment = .center
         astronImageView.image = UIImage(systemName: "photo")
         astronImageView.contentMode = .scaleAspectFit
-        AstronController.shared.fetchImage(withURL: astronItem.url) { (image) in
-            if let image = image{
-                
+        AstronController.shared.fetchImage(withURL: astronItem.url) { (result) in
+            switch result{
+            case .success(let image):
                 DispatchQueue.main.async {
                     if let currentIndexPath = collectionView.indexPath(for: cell), currentIndexPath != indexPath{
                         return
                     }
                     self.astronImageView.image = image
                     self.astronImageView.contentMode = .scaleAspectFill
+                }
+            case .failure( let networkError):
+                switch networkError {
+                case .invalidUrl, .invalidData, .invalidResponse:
+                    print(networkError)
+                case  .requestFailed(let error), .decodingError(let error):
+                print(networkError, error)
                 }
             }
         }

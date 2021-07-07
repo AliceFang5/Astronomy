@@ -7,41 +7,75 @@
 
 import UIKit
 
+enum NetworkError: Error {
+    case invalidUrl
+    case requestFailed(Error)
+    case invalidData
+    case invalidResponse
+    case decodingError(Error)
+}
+
 class AstronController{
     static let shared = AstronController()
     let astronURL = "https://raw.githubusercontent.com/cmmobile/NasaDataSet/main/apod.json"
     let imageCache = NSCache<NSURL, UIImage>()
     
-    func fetchAstronData(completion: @escaping ([AstronItem]?) -> Void){
-        guard let url = URL(string: astronURL) else { return }
+    func fetchAstronData(completion: @escaping (Result<[AstronItem], NetworkError>) -> Void){
+        guard let url = URL(string: astronURL) else {
+            completion(.failure(.invalidUrl))
+            return
+        }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-            if let data = data, let astronitems = try? jsonDecoder.decode([AstronItem].self, from: data){
-//                print(astronitems[2].title)
-                completion(astronitems)
-            }else{
-                completion(nil)
+            if let error = error{
+                completion(.failure(.requestFailed(error)))
+            }
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else{
+                completion(.failure(.invalidResponse))
+                return
+            }
+            guard let data = data else{
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do{
+                let jsonDecoder = JSONDecoder()
+                let astronitems = try jsonDecoder.decode([AstronItem].self, from: data)
+                completion(.success(astronitems))
+            }catch{
+                completion(.failure(.decodingError(error)))
             }
         }
         task.resume()
     }
     
-    func fetchImage(withURL urlString: String, completion: @escaping (UIImage?) -> Void){
-        guard let url = URL(string: urlString) else { return }
+    func fetchImage(withURL urlString: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void){
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.invalidUrl))
+            return
+        }
         
         if let image = imageCache.object(forKey: url as NSURL){
-            completion(image)
+            completion(.success(image))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data, let image = UIImage(data: data){
-                self.imageCache.setObject(image, forKey: url as NSURL)
-                completion(image)
-            }else{
-                completion(nil)
+            
+            if let error = error{
+                completion(.failure(.requestFailed(error)))
+                return
             }
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else{
+                completion(.failure(.invalidResponse))
+                return
+            }
+            guard let data = data, let image = UIImage(data: data) else{
+                completion(.failure(.invalidData))
+                return
+            }
+            completion(.success(image))
         }
         task.resume()
     }
